@@ -2,257 +2,250 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>City-trip Porto – 16 au 19 avril</title>
+  <title>Porto Trip – 16→19 avril 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #f5f7fb;
+      --bg: #f8fafc;
       --card: #ffffff;
-      --accent: #4f46e5;
-      --accent-soft: #e0e7ff;
-      --text: #111827;
-      --muted: #6b7280;
+      --accent: #1e40af;
+      --accent-soft: #dbeafe;
+      --text: #0f172a;
+      --muted: #64748b;
+      --success: #059669;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; }
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #eef2ff, #fdf2f8);
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, var(--accent-soft) 0%, #fef3c7 100%);
       color: var(--text);
+      line-height: 1.5;
     }
     header {
-      padding: 32px 16px 24px;
+      padding: 36px 20px 28px;
       text-align: center;
-      background: radial-gradient(circle at top, #4f46e5 0, #1f2937 55%, #020617 100%);
+      background: linear-gradient(135deg, var(--accent) 0%, #1e293b 70%);
       color: white;
+      position: relative;
+      overflow: hidden;
     }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23ffffff' opacity='0.1'%3E%3Ccircle cx='20' cy='20' r=2/%3E%3Ccircle cx='80' cy='80' r=1.5/%3E%3C/g%3E%3C/svg%3E");
+    }
+    header > * { position: relative; z-index: 1; }
     header h1 {
-      margin: 0 0 12px;
-      font-size: 2.1rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-size: 2.2rem;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+      font-weight: 700;
     }
-    header p {
-      margin: 0;
-      font-size: 0.98rem;
-      opacity: 0.85;
+    .subtitle {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      opacity: 0.95;
     }
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      background: rgba(15,23,42,0.7);
-      color: #e5e7eb;
-      border: 1px solid rgba(148,163,184,0.5);
-      margin-bottom: 12px;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
-    .badge span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.25);
-    }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
 
     main {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px 16px 40px;
+      padding: 24px 16px;
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1fr);
-      gap: 20px;
+      grid-template-columns: 1fr 320px;
+      gap: 28px;
     }
-    @media (max-width: 860px) {
-      main { grid-template-columns: minmax(0, 1fr); }
+    @media (max-width: 900px) {
+      main { grid-template-columns: 1fr; gap: 20px; }
     }
 
-    .card {
+    .day-card {
       background: var(--card);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      box-shadow:
-        0 18px 45px rgba(15,23,42,0.18),
-        0 0 0 1px rgba(148,163,184,0.18);
-      position: relative;
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05);
+      border: 1px solid rgba(255,255,255,0.6);
     }
-    .card + .card { margin-top: 14px; }
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+    .day-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .day-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .day-tag {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
-    .card h2 {
-      margin: 0 0 8px;
-      font-size: 1.15rem;
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-soft);
+      transition: all 0.2s ease;
+    }
+    .timeline-item:hover {
+      background: white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border-left-color: var(--accent);
+    }
+    .time {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 70px;
+      text-align: right;
+      padding-top: 2px;
+    }
+    .activity {
+      flex: 1;
+    }
+    .activity-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .activity-desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+    }
+    .activity-price {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--success);
+      background: rgba(5,150,105,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      border: 1px solid rgba(5,150,105,0.2);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+    .sidebar-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .sidebar h3 {
+      margin: 0 0 16px;
+      font-size: 1.1rem;
+      color: var(--text);
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .card h2 span.tag {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      background: #f9fafb;
-      border-radius: 999px;
-      padding: 3px 8px;
-      border: 1px solid #e5e7eb;
-    }
-    .card p {
-      margin: 0 0 8px;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 6px 0 4px;
-    }
-    .pill {
-      font-size: 0.74rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #f9fafb;
-      color: #4b5563;
-    }
-    .pill.highlight {
-      border-color: rgba(79,70,229,0.3);
-      background: #eef2ff;
-      color: #3730a3;
-    }
-
-    .day-title {
-      font-size: 0.86rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #6b7280;
-      margin-bottom: 6px;
-    }
-
-    .timeline {
-      border-left: 1px solid #e5e7eb;
-      margin-top: 8px;
-      padding-left: 12px;
-    }
-    .time-block {
-      margin-bottom: 10px;
-      position: relative;
-      padding-left: 8px;
-    }
-    .time-block::before {
-      content: "";
-      position: absolute;
-      left: -14px;
-      top: 4px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: white;
-      border: 2px solid #4f46e5;
-    }
-    .time-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #4b5563;
-      text-transform: uppercase;
-    }
-    .time-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #111827;
-    }
-    .time-desc {
-      font-size: 0.86rem;
-      color: #6b7280;
-    }
-
-    .price-badge {
-      font-size: 0.8rem;
-      background: #ecfdf5;
-      color: #047857;
-      border-radius: 999px;
-      padding: 3px 9px;
-      border: 1px solid #bbf7d0;
-      display: inline-block;
-      margin-top: 3px;
-    }
-
-    .sidebar-section + .sidebar-section { margin-top: 14px; }
-    .sidebar-section h3 {
-      margin: 0 0 6px;
-      font-size: 0.96rem;
-    }
-    .sidebar-section p {
-      margin: 0 0 6px;
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-
     .budget-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 4px;
-      font-size: 0.85rem;
-    }
-    .budget-table th,
-    .budget-table td {
-      border-bottom: 1px solid #e5e7eb;
-      padding: 6px 4px;
-      text-align: left;
+      margin-top: 12px;
+      font-size: 0.9rem;
     }
     .budget-table th {
+      text-align: left;
+      padding: 12px 0 8px 0;
+      font-weight: 600;
+      color: var(--muted);
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #6b7280;
+      letter-spacing: 0.05em;
     }
-    .budget-table tr:last-child td {
-      border-bottom: none;
+    .budget-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .budget-total {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
     }
 
-    .bar-list {
+    .bars-list {
       list-style: none;
       padding: 0;
       margin: 0;
-      font-size: 0.86rem;
     }
-    .bar-list li {
-      margin-bottom: 8px;
+    .bar-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
     }
+    .bar-item:last-child { border-bottom: none; }
     .bar-name {
       font-weight: 600;
+      margin-bottom: 2px;
     }
     .bar-note {
-      color: #6b7280;
-      font-size: 0.84rem;
+      color: var(--muted);
+      font-size: 0.88rem;
     }
 
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148,163,184,0.9);
-      background: rgba(15,23,42,0.02);
-      font-size: 0.78rem;
-      color: #4b5563;
-      margin-top: 6px;
+    .transport-note {
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
     }
-    .chip span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #f59e0b;
+    .transport-note h4 {
+      margin: 0 0 8px;
+      color: var(--success);
     }
+
     .footer {
       text-align: center;
-      font-size: 0.8rem;
-      color: #9ca3af;
-      padding: 0 0 24px;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -260,301 +253,264 @@
 
 <header>
   <div class="badge">
-    <span></span>
-    Porto • 16 → 19 avril • 3 amies
+    <span class="badge-dot"></span>
+    Porto • 16→19 avril 2026 • 3 amies • Holiday Inn Boavista
   </div>
-  <h1>City‑trip à Porto</h1>
-  <p>Programme optimisé prix / temps / plaisir pour 3 jours et 3 nuits.</p>
+  <h1>Porto Trip</h1>
+  <p class="subtitle">Arrivée 17:40 le 16 · Départ 06:15 le 19 · Planning au quart d'heure</p>
 </header>
 
 <main>
-  <!-- COLONNE PRINCIPALE -->
+  <!-- PROGRAMME PRINCIPAL -->
   <section>
     <!-- JOUR 1 -->
-    <article class="card">
-      <div class="day-title">Jour 1 · Jeudi 16 avril</div>
-      <h2>
-        Arrivée & première immersion
-        <span class="tag">Arrivée midi</span>
-      </h2>
-      <p>Installation au centre, découverte de la vieille ville et première francesinha.</p>
-
-      <div class="pill-row">
-        <span class="pill highlight">Quartiers : Aliados · Baixa · Clérigos</span>
-        <span class="pill">Tout à pied</span>
-        <span class="pill">Ambiance chill</span>
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">
+          <div>Jeudi</div>
+          <div>16</div>
+        </div>
+        <div class="day-title">Arrivée & première soirée</div>
+        <div class="day-tag">17:40 atterrissage</div>
       </div>
 
-      <div class="timeline">
-        <div class="time-block">
-          <div class="time-label">12h00 – 14h00</div>
-          <div class="time-title">Aéroport → Centre de Porto</div>
-          <div class="time-desc">
-            Métro ligne E (violette) depuis l'aéroport jusqu'à Trindade / Bolhão / Aliados.
-            <br>Billet Z4 ≈ 2,25 € + carte Andante 0,60 € (trajet ~30–35 min).
-          </div>
-          <div class="price-badge">≈ 3 € / personne</div>
+      <div class="timeline-item">
+        <div class="time">17:40–18:15</div>
+        <div class="activity">
+          <div class="activity-title">Atterrissage OPO</div>
+          <div class="activity-desc">Sortie aéroport + bagages</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">14h00 – 17h00</div>
-          <div class="time-title">Aliados · São Bento · Clérigos</div>
-          <div class="time-desc">
-            Balade sur l'Avenida dos Aliados, visite de la gare São Bento (azulejos),
-            montée à la Torre dos Clérigos pour une vue panoramique.
-            <br>Entrée tour Clérigos ≈ 8 €.
+      <div class="timeline-item">
+        <div class="time">18:15–18:45</div>
+        <div class="activity">
+          <div class="activity-title">→ Hôtel Boavista</div>
+          <div class="activity-desc">
+            Taxi direct (12–15 €, 11–15 min) OU métro E → Casa da Música + 10 min pied
           </div>
-          <div class="price-badge">0 € (balade) · 8 € (tour)</div>
+          <div class="activity-price">3–15 € / personne</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">17h00 – 19h00</div>
-          <div class="time-title">Pause café & check‑in</div>
-          <div class="time-desc">
-            Installation à l’hébergement, café ou verre dans le quartier.
-          </div>
+      <div class="timeline-item">
+        <div class="time">19:00–20:00</div>
+        <div class="activity">
+          <div class="activity-title">Check-in + pause</div>
+          <div class="activity-desc">Douche, snack au Mercado Bom Sucesso si faim</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">Soir</div>
-          <div class="time-title">Dîner francesinha</div>
-          <div class="time-desc">
-            Café Santiago ou Brasão Cervejaria Aliados pour goûter la spécialité
-            locale (francesinha + boisson).
+      <div class="timeline-item">
+        <div class="time">20:00–23:30</div>
+        <div class="activity">
+          <div class="activity-title">Aliados → Clérigos → Francesinha</div>
+          <div class="activity-desc">
+            Balade nocturne São Bento + Clérigos, dîner francesinha (Brasão Aliados)
           </div>
-          <div class="price-badge">≈ 15–25 € / personne</div>
+          <div class="activity-price">15–25 € dîner + 6–9 € taxi</div>
         </div>
       </div>
     </article>
 
     <!-- JOUR 2 -->
-    <article class="card">
-      <div class="day-title">Jour 2 · Vendredi 17 avril</div>
-      <h2>
-        Douro, croisière & caves de porto
-        <span class="tag">Journée « carte postale »</span>
-      </h2>
-      <p>Ribeira, croisière des 6 ponts, visite d’une cave à Gaia et coucher de soleil avec vue sur Porto.</p>
-
-      <div class="pill-row">
-        <span class="pill highlight">Quartiers : Ribeira · Vila Nova de Gaia</span>
-        <span class="pill">Croisière 6 ponts</span>
-        <span class="pill">Dégustation de porto</span>
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">
+          <div>Vendredi</div>
+          <div>17</div>
+        </div>
+        <div class="day-title">Douro & caves de porto</div>
+        <div class="day-tag">Croisière + coucher de soleil</div>
       </div>
 
-      <div class="timeline">
-        <div class="time-block">
-          <div class="time-label">Matin</div>
-          <div class="time-title">Balade à Ribeira + croisière</div>
-          <div class="time-desc">
-            Descente à pied jusqu’aux quais de la Ribeira, cafés et photos,
-            puis croisière des 6 ponts (~50 min) au départ du quai.
-            <br>Croisière ≈ 18–20 € / personne.
-          </div>
-          <div class="price-badge">≈ 20 € / personne</div>
+      <div class="timeline-item">
+        <div class="time">09:30–10:00</div>
+        <div class="activity">
+          <div class="activity-title">→ Ribeira</div>
+          <div class="activity-desc">Métro ou taxi vers São Bento</div>
+          <div class="activity-price">6–9 € taxi</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">Déjeuner</div>
-          <div class="time-title">Resto au bord du Douro</div>
-          <div class="time-desc">
-            Déjeuner dans un restaurant en Ribeira (plats 10–15 €, menu complet 15–20 €).
-          </div>
-          <div class="price-badge">≈ 15–20 € / personne</div>
+      <div class="timeline-item">
+        <div class="time">10:00–12:00</div>
+        <div class="activity">
+          <div class="activity-title">Ribeira + croisière 6 ponts</div>
+          <div class="activity-desc">Balade quais + croisière (~50 min)</div>
+          <div class="activity-price">18–20 €</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">Après‑midi</div>
-          <div class="time-title">Pont Dom Luís I & cave de porto</div>
-          <div class="time-desc">
-            Traversée du pont Dom Luís I à pied, visite d’une cave (Sandeman, Cálem, Taylor’s, etc.)
-            avec dégustation (14–17 €).
-          </div>
-          <div class="price-badge">≈ 15–20 € / personne</div>
+      <div class="timeline-item">
+        <div class="time">12:30–14:00</div>
+        <div class="activity">
+          <div class="activity-title">Déjeuner Ribeira</div>
+          <div class="activity-desc">Resto quais du Douro</div>
+          <div class="activity-price">15–20 €</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">Soir</div>
-          <div class="time-title">Coucher de soleil & dîner</div>
-          <div class="time-desc">
-            Verre au rooftop Espaço Porto Cruz ou Rooftop Santa Catarina, puis dîner à Gaia
-            avec vue sur Porto, retour à pied par le pont.
-          </div>
-          <div class="price-badge">≈ 20–30 € / personne</div>
+      <div class="timeline-item">
+        <div class="time">14:00–17:30</div>
+        <div class="activity">
+          <div class="activity-title">Gaia : pont + cave de porto</div>
+          <div class="activity-desc">Traversée pont Dom Luís I + visite/dégustation</div>
+          <div class="activity-price">14–17 €</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time">17:30–20:30</div>
+        <div class="activity">
+          <div class="activity-title">Rooftop coucher de soleil</div>
+          <div class="activity-desc">Espaço Porto Cruz ou Rooftop Santa Catarina</div>
+          <div class="activity-price">7–12 € cocktail</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time">20:30–23:30</div>
+        <div class="activity">
+          <div class="activity-title">Dîner Gaia + retour hôtel</div>
+          <div class="activity-desc">Dîner vue Porto + taxi retour</div>
+          <div class="activity-price">20–30 € + 8–12 € taxi</div>
         </div>
       </div>
     </article>
 
     <!-- JOUR 3 -->
-    <article class="card">
-      <div class="day-title">Jour 3 · Samedi 18 avril</div>
-      <h2>
-        Ville, plage & soirée
-        <span class="tag">Météo‑dépendant</span>
-      </h2>
-      <p>Au choix : culture & shopping en ville ou escapade vers l’océan à Foz / Matosinhos, puis sortie le soir.</p>
-
-      <div class="pill-row">
-        <span class="pill highlight">Option A : Mercado · Palais · Serralves</span>
-        <span class="pill highlight">Option B : Foz · Matosinhos</span>
-        <span class="pill">Soirée bars & clubs</span>
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">
+          <div>Samedi</div>
+          <div>18</div>
+        </div>
+        <div class="day-title">Ville ou océan + soirée</div>
+        <div class="day-tag">Option météo</div>
       </div>
 
-      <div class="timeline">
-        <div class="time-block">
-          <div class="time-label">Matin</div>
-          <div class="time-title">Option ville : Mercado do Bolhão</div>
-          <div class="time-desc">
-            Marché couvert rénové, produits locaux, souvenirs gourmands.
-          </div>
-
-          <div class="time-title" style="margin-top:6px;">Option plage : Foz do Douro</div>
-          <div class="time-desc">
-            Andante 24h (Z3/Z4) pour bus/métro, balade le long de l’océan, cafés et photos.
-          </div>
-          <div class="price-badge">Andante 24h ≈ 6,65–8,30 €</div>
+      <div class="timeline-item">
+        <div class="time">10:00–13:30</div>
+        <div class="activity">
+          <div class="activity-title">Option A : Mercado Bolhão</div>
+          <div class="activity-desc">Marché couvert + flânerie Baixa</div>
+          <div class="activity-price">Gratuit</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">Après‑midi</div>
-          <div class="time-title">Culture ou plage</div>
-          <div class="time-desc">
-            Ville : église São Francisco, Palácio da Bolsa, voire Serralves (musée + parc).
-            <br>Plage : Matosinhos pour une grande plage et restos de poisson.
-          </div>
-          <div class="price-badge">Visites ≈ 15–30 € (selon choix)</div>
+      <div class="timeline-item">
+        <div class="time">10:00–13:30</div>
+        <div class="activity">
+          <div class="activity-title">Option B : Foz do Douro</div>
+          <div class="activity-desc">Bus vers côte Atlantique, balade océan</div>
+          <div class="activity-price">Bus ~2–3 €</div>
         </div>
+      </div>
 
-        <div class="time-block">
-          <div class="time-label">Soir</div>
-          <div class="time-title">Dernier dîner & bars</div>
-          <div class="time-desc">
-            Dîner (francesinha bis ou fruits de mer) puis bars à Galerias de Paris
-            (Base Porto, Aduela, Plano B, etc.) ou soirée fado si vous préférez.
+      <div class="timeline-item">
+        <div class="time">13:30–16:30</div>
+        <div class="activity">
+          <div class="activity-title">Déjeuner + Matosinhos (plage)</div>
+          <div class="activity-desc">Poisson/fruits de mer + grande plage</div>
+          <div class="activity-price">20–25 €</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time">20:00–02:00</div>
+        <div class="activity">
+          <div class="activity-title">Soirée bars Galerias de Paris</div>
+          <div class="activity-desc">
+            Base Porto, Aduela, Plano B, MaoMaria OU fado (Ideal Clube)
           </div>
-          <div class="price-badge">Dîner ≈ 20–30 € + boissons</div>
+          <div class="activity-price">30–60 € (boissons + entrée)</div>
         </div>
       </div>
     </article>
 
     <!-- JOUR 4 -->
-    <article class="card">
-      <div class="day-title">Jour 4 · Dimanche 19 avril</div>
-      <h2>
-        Départ tôt le matin
-        <span class="tag">Retour à Genève</span>
-      </h2>
-      <p>Check‑out et transfert rapide vers l’aéroport.</p>
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">
+          <div>Dimanche</div>
+          <div>19</div>
+        </div>
+        <div class="day-title">Départ 06:15</div>
+        <div class="day-tag">Très tôt !</div>
+      </div>
 
-      <div class="timeline">
-        <div class="time-block">
-          <div class="time-label">Très tôt</div>
-          <div class="time-title">Centre → Aéroport</div>
-          <div class="time-desc">
-            Taxi / Uber / Bolt recommandé si le métro tourne peu :
-            15–25 € la course à partager à 3.
+      <div class="timeline-item">
+        <div class="time">04:00–04:45</div>
+        <div class="activity">
+          <div class="activity-title">Check-out → Aéroport</div>
+          <div class="activity-desc">
+            Taxi/VTC Boavista → OPO (11–15 min), arriver 04:15
           </div>
-          <div class="price-badge">≈ 5–8 € / personne (taxi partagé)</div>
+          <div class="activity-price">12–15 € taxi (à partager)</div>
         </div>
       </div>
     </article>
   </section>
 
   <!-- SIDEBAR -->
-  <aside>
-    <section class="card sidebar-section">
-      <h3>Budget estimatif par personne</h3>
-      <p>Hors vols et hébergement, pour 3 jours complets sur place.</p>
-      <table class="budget-table">
-        <thead>
-          <tr>
-            <th>Poste</th>
-            <th>Montant</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Transports locaux</td>
-            <td>20–25 €</td>
-          </tr>
-          <tr>
-            <td>Repas (3 jours)</td>
-            <td>90–135 €</td>
-          </tr>
-          <tr>
-            <td>Croisière & cave</td>
-            <td>35–40 €</td>
-          </tr>
-          <tr>
-            <td>Autres visites</td>
-            <td>15–30 €</td>
-          </tr>
-          <tr>
-            <td style="font-weight:600;">Total ≈</td>
-            <td style="font-weight:600;">170–230 €</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="chip">
-        <span class="dot"></span>
-        Ajustez facilement en supprimant 1–2 visites payantes pour réduire le budget.
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>🏨 Hôtel Boavista</h3>
+      <p><strong>Holiday Inn Express Porto – Boavista</strong><br>
+      Proche Casa da Música (métro) + Mercado Bom Sucesso.<br>
+      Petit-déj inclus, check-in 15:00.</p>
+
+      <div class="transport-note">
+        <h4>🚕 Transports clés</h4>
+        <p><strong>Aéroport → Hôtel :</strong> Taxi 12–15€ (11–15min)<br>
+        <strong>Centre → Hôtel :</strong> Taxi 6–9€ (10–15min)<br>
+        <strong>Gaia → Hôtel :</strong> Taxi 8–12€ (15–20min)</p>
       </div>
-    </section>
+    </div>
 
-    <section class="card sidebar-section">
-      <h3>Bars & rooftops à tester</h3>
-      <p>Pour les apéros et les soirées entre copines.</p>
-      <ul class="bar-list">
-        <li>
-          <div class="bar-name">Base Porto (Baixa)</div>
-          <div class="bar-note">Bar‑jardin ouvert, vue sur Clérigos, parfait au coucher du soleil.</div>
-        </li>
-        <li>
-          <div class="bar-name">Aduela Taberna Bar</div>
-          <div class="bar-note">Bar à vins très populaire, ambiance locale et tapas.</div>
-        </li>
-        <li>
-          <div class="bar-name">Letraria Craft Beer Garden</div>
-          <div class="bar-note">Bières artisanales et grande terrasse/jardin.</div>
-        </li>
-        <li>
-          <div class="bar-name">Espaço Porto Cruz (Gaia)</div>
-          <div class="bar-note">Rooftop avec vue sur Porto, cocktails au porto.</div>
-        </li>
-        <li>
-          <div class="bar-name">Rooftop Santa Catarina (Gaia)</div>
-          <div class="bar-note">Rooftop avec vue panoramique sur le Douro et la Ribeira.</div>
-        </li>
-        <li>
-          <div class="bar-name">Plano B (Galerias de Paris)</div>
-          <div class="bar-note">Bar/club avec plusieurs salles, bonne option pour danser.</div>
-        </li>
-        <li>
-          <div class="bar-name">MaoMaria</div>
-          <div class="bar-note">Bar avec cocktails & musique pop, très animé jusqu’à tard.</div>
-        </li>
-      </ul>
-    </section>
+    <div class="sidebar-card">
+      <h3>💰 Budget par personne</h3>
+      <table class="budget-table">
+        <tr><th>Transports</th><td>25–35 €</td></tr>
+        <tr><th>Repas (2,5 jours)</th><td>80–120 €</td></tr>
+        <tr><th>Croisière + cave</th><td>32–37 €</td></tr>
+        <tr><th>Visites</th><td>15–30 €</td></tr>
+        <tr><th>Bars/soirées</th><td>30–60 €</td></tr>
+        <tr><td colspan="2" class="budget-total">≈ <strong>180–280 €</strong></td></tr>
+      </table>
+    </div>
 
-    <section class="card sidebar-section">
-      <h3>Option Fado</h3>
-      <p>Pour une soirée plus calme et typique.</p>
-      <ul class="bar-list">
-        <li>
+    <div class="sidebar-card">
+      <h3>🍸 Meilleurs bars</h3>
+      <ul class="bars-list">
+        <li class="bar-item">
+          <div class="bar-name">Base Porto</div>
+          <div class="bar-note">Bar-jardin, vue Clérigos</div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-name">Espaço Porto Cruz</div>
+          <div class="bar-note">Rooftop Gaia, cocktails porto</div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-name">Aduela Taberna</div>
+          <div class="bar-note">Vins, bières, tapas locals</div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-name">Plano B</div>
+          <div class="bar-note">Club danser (Galerias)</div>
+        </li>
+        <li class="bar-item">
           <div class="bar-name">Ideal Clube de Fado</div>
-          <div class="bar-note">Concert d’environ 1 h, ≈ 20 € avec un verre de porto.</div>
-        </li>
-        <li>
-          <div class="bar-name">Clube Real do Fado</div>
-          <div class="bar-note">Salle intime, tapas & vins du Douro, concerts réguliers.</div>
+          <div class="bar-note">Fado + verre porto (~20€)</div>
         </li>
       </ul>
-    </section>
+    </div>
   </aside>
 </main>
 
 <div class="footer">
-  Prévisions de coûts & planning indicatifs – à ajuster selon vos envies et la météo.
+  Planning précis & budget réaliste • Coucher soleil ~20h45 • Taxi partout recommandé
 </div>
 
 </body>
